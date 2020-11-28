@@ -1,0 +1,145 @@
+// import variables at the top 🎩
+@import "./partials/variables";
+@import "./partials/fonts";
+@import "./partials/animations";
+
+/* box-sizing fix */
+* {
+  box-sizing: border-box;
+  // border: 1px dashed rgba(255, 255, 255, 0.6);
+}
+
+html,
+body {
+  font-size: 16px;
+  font-family: "Star Jedi Logo MonoLine";
+  font-family: "News Cycle", sans-serif;
+  text-align: center;
+  background: $black;
+  background: linear-gradient(rgba($black, 0.6), rgba($black, 0.6)),
+    url(../assets/images/starfield.jpg);
+  background-size: cover;
+  color: $primary-color;
+  height: 100vh; // this will lock the height, only a good idea for an animation like this
+  width: 100vw;
+  overflow: hidden; // things off longer than the page are hidden
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Star Jedi Hollow";
+}
+
+// 'responsive' img
+img {
+  max-width: 100%;
+}
+
+// general link style
+a {
+  text-decoration: none;
+  color: $secondary-color;
+  &:hover {
+    text-decoration: none;
+    color: lighten($secondary-color, 5%);
+  }
+}
+.instruction {
+  font-family: Georgia, serif;
+  display: block;
+  font-size: 36px;
+}
+
+// option to set a max-width to contain elements/sections
+.container {
+  margin: 0 auto;
+  max-width: 1240px;
+}
+
+.audio {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 6.25rem;
+  height: auto;
+  z-index: 999;
+  &__player {
+    width: 100%;
+    opacity: 0.5;
+    transition: opacity 1s;
+
+    &::-webkit-media-controls-panel {
+      background: black;
+      color: white;
+    }
+    &:-webkit-media-controls-volume-slider,
+    &::-webkit-media-controls-mute-button,
+    &::-webkit-media-controls-play-button {
+      color: inherit;
+    }
+    &:hover {
+      opacity: 0.9;
+      &::-webkit-media-controls-panel {
+        background: white;
+        color: black;
+      }
+    }
+  } // __player
+}
+
+.sw-intro {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: left;
+  animation: fade-in-out 5s linear forwards;
+  &__text {
+    color: $secondary-color;
+    font-size: 3.65rem;
+  }
+}
+
+// star wars intro text, slowly moves to the back, fades away
+.sw-intro-logo {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  animation: title-zoom ease-out 6s 5s forwards;
+  &__title {
+    margin: 0;
+    font-size: 25rem;
+    letter-spacing: 1px;
+    line-height: 22rem;
+    text-rendering: optimizeLegibility;
+  }
+}
+
+.sw-scroll {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  transform: perspective(500px) rotateX(30deg);
+  &__inner {
+    height: auto;
+    // background: rgba(255, 255, 255, 0.2);
+    transform: translateY(100vh);
+    animation: scroll-text 80s 2.5s linear forwards;
+  }
+  &__text {
+    margin: 0 auto;
+    font-size: 3.5rem;
+    line-height: 1.2;
+    text-align: center;
+    width: 100%;
+    max-width: 760px;
+  }
+}
